@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Example</title>
+    <style>
+        /* Basic styling for the dropdown */
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select Preferences</h1>
+
+    <label for="CampusDropdown">Select Campus:</label>
+    <select id="CampusDropdown">
+        <option value="Busch">Busch</option>
+        <option value="C/D">C/D</option>
+        <option value="Livingston">Livingston</option>
+        <option value="College Avenue">CollegeAvenue</option>
+    </select>
+
+    <label for="BuildingDropdown">Select Building:</label>
+    <select id="BuildingDropdown">
+        <option value="Busch">Busch</option>
+        <option value="C/D">C/D</option>
+        <option value="Livingston">Livingston</option>
+        <option value="College Avenue">CollegeAvenue</option>
+    </select>
+
+    <label for="StartTimeDropdown">Select Start Time:</label>
+    <select id="StartTimeDropdown">
+        <option value="Busch">Busch</option>
+        <option value="C/D">C/D</option>
+        <option value="Livingston">Livingston</option>
+        <option value="College Avenue">CollegeAvenue</option>
+    </select>
+    <label for="AMorPMDropdown">Select AM or PM:</label>
+    <select id="AMorPMDropdown">
+        <option value="AM">AM</option>
+        <option value="PM">PM</option>
+    </select>
+    <label for="DurationDropdown">Select Duration:</label>
+    <select id="DurationDropdown">
+        <option value="Busch">Busch</option>
+        <option value="C/D">C/D</option>
+        <option value="Livingston">Livingston</option>
+        <option value="College Avenue">CollegeAvenue</option>
+    </select>
+
+    <label for="WeekdayDropdown">Select Weekday:</label>
+    <select id="WeekdayDropdown">
+        <option value="Monday">Monday</option>
+        <option value="Tuesday">Tuesday</option>
+        <option value="Wednesday">Wednesday</option>
+        <option value="Thursday">Thursday</option>
+        <option value="Friday">Friday</option>
+    </select>
+
+    
+
+    <script>
+        // JavaScript to handle dropdown change events
+        const CampusDropdown = document.getElementById('CampusDropdown');
+        const BuildingDropdown = document.getElementById('BuildingDropdown');
+        const StartTimeDropdown = document.getElementById('StartTimeDropdown');
+        const AmorpmDropdown = document.getElementById('AMorPMDropdown');
+        const DurationDropdown = document.getElementById('DurationDropdown');
+        const WeekdayDropdown = document.getElementById('WeekdayDropdown');
+
+
+        CampusDropdown.addEventListener('change', function() {
+            console.log('Selected Campus: ' + this.value);
+        });
+
+        BuildingDropdown.addEventListener('change', function() {
+            console.log('Selected Building: ' + this.value);
+        });
+
+        StartTimeDropdown.addEventListener('change', function() {
+            console.log('Selected Start Time: ' + this.value);
+        });
+        AmorpmDropdown.addEventListener('change', function() {
+            console.log('Selected AM or PM: ' + this.value);
+        });
+        DurationDropdown.addEventListener('change', function() {
+            console.log('Selected Duration: ' + this.value);
+        });
+
+    </script>
+</body>
+</html>
