@@ -44,7 +44,7 @@ def query_database(campus, building, start_time, M_value, duration, weekday):
             cstart = str(cs[0]) + '' + str(cs[1])
             cend = str(ce[0]) + '' + str(ce[1])
 
-            if end >= cstart and start <= cend:
+            if int(end) >= int(cstart) and int(start) <= int(cend):
                 roomIsEmpty = False
                 break
             else:
@@ -64,10 +64,6 @@ def submit():
 
     query = query_database(campus, '%' if building == 'Any' else building, start_time, M_value, duration, weekday)
     return jsonify(query)
-    # res = f"Received: Campus = {campus}, Building = {building}, Start Time = {start_time}, \
-    #     Time Period = {M_value}, Duration = {duration}, Weekday = {weekday}"
-
-    # return render_template('frontend.html', result = res, query_result = query)
 
 if __name__ == '__main__':
     app.run(debug=True)
