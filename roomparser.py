@@ -95,7 +95,7 @@ cur.execute("""CREATE TABLE abbrroom AS \
             FROM rooms \
             INNER JOIN abbrs ON rooms.building=abbrs.buildingname""")
 
-result = cur.execute("""SELECT abbcampus, abbr, room FROM abbrroom WHERE campus like '%' AND building like 'Lucy Stone Hall'""")
+# result = cur.execute("""SELECT abbcampus, abbr, room FROM abbrroom WHERE campus like '%' AND building like 'Lucy Stone Hall'""")
 conn.commit()
 
 # for row in result:

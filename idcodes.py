@@ -15,7 +15,7 @@ for row in rows[1:]:  # Skip the first row since it's the header
     cells = [cell.text.strip() for cell in row.find_all("td")]
     data.append(cells)
 df = pd.DataFrame(data, columns=headers)
-brr_row = {"Abbr.":"BRR","Building Name":"Buisness Rockefeller Road","Campus": "LIV", "Number": "0"}
+brr_row = {"Abbr.":"BRR","Building Name":"Business Rockafeller Road","Campus": "LIV", "Number": "0"}
 df.loc[len(df)] = brr_row
 df = df[df["Building Name"] != "Rutgers Cinema"]
 df = df[df["Building Name"] != "Rutgers Academic Building"]
