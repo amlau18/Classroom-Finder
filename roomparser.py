@@ -85,14 +85,18 @@ conn = sqlite3.connect("schedule.db")
 cur = conn.cursor()
 
 cur.execute("""DROP TABLE IF EXISTS rooms""")
+cur.execute("""DROP TABLE IF EXISTS abbrroom""")
 
-cur.execute("""CREATE TABLE IF NOT EXISTS rooms  (id INTEGER PRIMARY KEY AUTOINCREMENT, campus TEXT, building TEXT, room TEXT)""")
+cur.execute("""CREATE TABLE rooms  (id INTEGER PRIMARY KEY AUTOINCREMENT, campus TEXT, building TEXT, room TEXT)""")
 cur.executemany('INSERT INTO rooms(campus, building, room) VALUES(?, ?, ?)', list(zip(campus, buildings, brooms)))
 
-cur.execute("""SELECT rooms.id, rooms.campus, abbrs.abbr, rooms.building, rooms.room \
-               FROM rooms \
-               INNER JOIN abbrs ON rooms.building=abbrs.buildingname""")
+cur.execute("""CREATE TABLE abbrroom AS \
+            SELECT rooms.id, abbrs.campus, rooms.campus, abbrs.abbr, rooms.building, rooms.room \
+            FROM rooms \
+            INNER JOIN abbrs ON rooms.building=abbrs.buildingname""")
+
+result = cur.execute("""SELECT * FROM abbrroom""")
 conn.commit()
 
-for row in cur.execute("SELECT * FROM rooms"):
+for row in result:
     print(row)

@@ -24,11 +24,21 @@ df["Building Name"] = df["Building Name"].replace("Rutgers Academic Building - W
 df["Building Name"] = df["Building Name"].replace("Science & Engineering Resource Center (T. Alexander Pond)", "Science & Engineering Resource Center")
 print(df)
 df.to_json("idcodes.json", orient="records")
-# Create a connection to SQLite database (it will create the database if it doesn't exist)
-conn = sqlite3.connect('my_database.db')  # 'example.db' is the name of the database file
 
-# Convert the DataFrame to an SQL table
-df.to_sql('Abbrs', conn, if_exists='replace', index=False)
+conn = sqlite3.connect("schedule.db")
+cur = conn.cursor()
 
-# Close the connection
-conn.close()
+df.to_sql('abbrs', conn, if_exists='replace', index_label='id')
+cur.execute("""ALTER TABLE abbrs RENAME COLUMN 'Abbr.' TO abbr""")
+cur.execute("""ALTER TABLE abbrs RENAME COLUMN 'Building Name' TO buildingname""")
+cur.execute("""ALTER TABLE abbrs RENAME COLUMN Campus TO campus""")
+# cur.execute("""CREATE TABLE IF NOT EXISTS abbrs  (id INTEGER PRIMARY KEY AUTOINCREMENT, abbr TEXT, building TEXT, campus TEXT)""")
+
+conn.commit()
+
+cur.execute("""SELECT * FROM abbrs""")
+for i in cur.description:
+    print(i[0])
+
+for row in cur.execute("SELECT * FROM abbrs"):
+    print(row)
