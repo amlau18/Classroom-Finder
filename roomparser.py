@@ -14,7 +14,6 @@ for element in rms:
     else:
         badrooms.append(element.next_element.next_element)
 
-
 rooms = [[0 for x in range(106)] for y in range(4)] 
 counter = 0
 i = 0
@@ -72,15 +71,6 @@ brooms.insert(210, "011")
 brooms.insert(211, "013")
 brooms.insert(212, "017")
 
-# data = {
-#     "Campus": campus,
-#     "Building": buildings,
-#     "Room": brooms
-# }
-
-# df = pd.DataFrame(data)
-# print (df)
-
 conn = sqlite3.connect("schedule.db")
 cur = conn.cursor()
 
@@ -95,10 +85,10 @@ cur.execute("""CREATE TABLE abbrroom AS \
             FROM rooms \
             INNER JOIN abbrs ON rooms.building=abbrs.buildingname""")
 
-# result = cur.execute("""SELECT abbcampus, abbr, room FROM abbrroom WHERE campus like '%' AND building like 'Lucy Stone Hall'""")
+# query = f"SELECT start, end, pmCode FROM cd WHERE room like ? AND campus = ? AND day = ? AND building = ?"
+# class_time = cur.execute(query, (f'127', f'C/D', f'M', f'HCK'))
+
+# for row in class_time: print (row)
+
 conn.commit()
-
-# for row in result:
-#     print(row)
-
 conn.close()
