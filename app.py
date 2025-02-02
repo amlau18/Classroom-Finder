@@ -80,7 +80,8 @@ def submit():
     weekday = request.form.get('WeekdayDropdown')
     
     query = query_database(campus, '%' if building == 'Any' else building, start_time, M_value, int(duration), weekday)
-    return jsonify(query)
+    #return jsonify(result=query)
+    return render_template('index.html',query = query)
 
 if __name__ == '__main__':
     app.run(debug=True)

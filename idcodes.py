@@ -22,7 +22,7 @@ df = df[df["Building Name"] != "Rutgers Academic Building"]
 df["Building Name"] = df["Building Name"].replace("Rutgers Academic Building - East Wing", "Rutgers Academic Building (East Wing)")
 df["Building Name"] = df["Building Name"].replace("Rutgers Academic Building - West Wing", "Rutgers Academic Building (West Wing)")
 df["Campus"] = df["Campus"].replace("FBO", "BUS")
-print(df)
+# print(df)
 df.to_json("idcodes.json", orient="records")
 
 conn = sqlite3.connect("schedule.db")

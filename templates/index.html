@@ -20,7 +20,7 @@
         <img src="https://i.pinimg.com/originals/15/29/48/152948d88bf1ab5934db9722f0e21d9b.jpg" style="position: absolute; right: 10px; top: 10px;" width = 245px length = 250px>
         <img src="https://images.lifestyleasia.com/wp-content/uploads/sites/6/2024/03/28094002/best-anime-food-1600x800.jpg" style="position: absolute; left: 550px; top: 40px;" width = 245px length = 250px>
     </h1>
-    <form action="/submit" method="POST">
+    <form id = "dropdownform" action="/submit" method="POST">
         <label for="CampusDropdown">Campus:</label>
         <select name="CampusDropdown" id="CampusDropdown" onchange="updateOptions()">
             <option value="">Select</option>
@@ -176,22 +176,13 @@
         }
     </script>
     <div id= "output"> </div>
-    <script>
-            fetch('http://localhost:5000/data')
-                .then(response => response.json())
-                .then(data => {
-                    let htmlContent = "<h2>Rooms Available:</h2>";
-                    for (let item of data) {
-                        
-            
-                        htmlContent += `
-                            <p>${item}</p>
-                            <hr>
-                        `;
-                    }
-            document.getElementById('output').innerHTML = htmlContent;
-            })
-    </script>
+
+    {% if query %}
+        <h2>Query Result:</h2>
+        <p>{{ query }}</p>
+    {% endif %}
+
+    
 
 </body>
 
