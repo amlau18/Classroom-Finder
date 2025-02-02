@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Yomogi&family=Zen+Tokyo+Zoo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quattrocento:wght@400;700&family=Yomogi&family=Zen+Tokyo+Zoo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Crete+Round:ital@0;1&family=Quattrocento:wght@400;700&family=Yomogi&family=Zen+Tokyo+Zoo&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Sacramento&display=swap");
+body {
+    font-family: 'Zen Tokyo Zoo', serif;
+    font-size: 30px;
+    background-color: bisque;
+}
+option{
+    font-family: 'Quattrocento', serif;
+}
+label {
+    font-family: 'Zen Tokyo Zoo', serif;
+    font-size: 30px;
+    color:rgb(45, 25, 25);
+}
+h1{
+    font-family: 'Zen Tokyo Zoo', serif;
+    font-size: 75px;
+    color:rgb(75, 38, 38);
+}
+select{
+    font-family: 'Quattrocento', serif;
+    border-color: rgb(75, 38, 38);
+    border-radius: 20px;
+}
+img {
+    border-radius: 25%;
+}
+button{
+    font-family: 'Sacremento', serif;
+    font-size: 20px;
+    border-color: rgb(75, 38, 38) ;
+    border-radius: 20px;
+    background-color:aliceblue;
+}
