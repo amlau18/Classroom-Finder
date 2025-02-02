@@ -81,7 +81,7 @@ def submit():
     
     query = query_database(campus, '%' if building == 'Any' else building, start_time, M_value, int(duration), weekday)
     #return jsonify(result=query)
-    return render_template('index.html',query = query)
+    return render_template('index.html',query = (["No available classrooms"] if len(query) == 0 else query))
 
 if __name__ == '__main__':
     app.run(debug=True)

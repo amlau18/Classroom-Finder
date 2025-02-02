@@ -178,9 +178,13 @@
     <div id= "output"> </div>
 
     {% if query %}
-        <h2>Query Result:</h2>
-        <p>{{ query }}</p>
-    {% endif %}
+    <h2>Available Rooms:</h2>
+    <ul>
+        {% for item in query %}
+            <li>{{ item }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 
     
 
