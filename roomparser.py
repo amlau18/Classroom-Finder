@@ -1,8 +1,8 @@
 import json
 import requests
 from bs4 import BeautifulSoup
-import re
 import pandas as pd
+import sqlite3
 
 rms = requests.get("https://dcs.rutgers.edu/classrooms/find-a-classroom?items_per_page=All")
 rms = BeautifulSoup(rms.text, 'html.parser').find_all(class_=["campus-header-text","accordion-row"])
@@ -72,11 +72,27 @@ brooms.insert(210, "011")
 brooms.insert(211, "013")
 brooms.insert(212, "017")
 
-data = {
-    "Campus": campus,
-    "Building": buildings,
-    "Room": brooms
-}
+# data = {
+#     "Campus": campus,
+#     "Building": buildings,
+#     "Room": brooms
+# }
 
-df = pd.DataFrame(data)
-print (df)
+# df = pd.DataFrame(data)
+# print (df)
+
+conn = sqlite3.connect("schedule.db")
+cur = conn.cursor()
+
+cur.execute("""DROP TABLE IF EXISTS rooms""")
+
+cur.execute("""CREATE TABLE IF NOT EXISTS rooms  (id INTEGER PRIMARY KEY AUTOINCREMENT, campus TEXT, building TEXT, room TEXT)""")
+cur.executemany('INSERT INTO rooms(campus, building, room) VALUES(?, ?, ?)', list(zip(campus, buildings, brooms)))
+
+cur.execute("""SELECT rooms.id, rooms.campus, abbrs.abbr, rooms.building, rooms.room \
+               FROM rooms \
+               INNER JOIN abbrs ON rooms.building=abbrs.buildingname""")
+conn.commit()
+
+for row in cur.execute("SELECT * FROM rooms"):
+    print(row)
