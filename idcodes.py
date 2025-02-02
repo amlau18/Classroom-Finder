@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import sqlite3
 
 url = "https://dcs.rutgers.edu/classrooms/building-identification-codes"
 response = requests.get(url)
@@ -23,3 +24,11 @@ df["Building Name"] = df["Building Name"].replace("Rutgers Academic Building - W
 df["Building Name"] = df["Building Name"].replace("Science & Engineering Resource Center (T. Alexander Pond)", "Science & Engineering Resource Center")
 print(df)
 df.to_json("idcodes.json", orient="records")
+# Create a connection to SQLite database (it will create the database if it doesn't exist)
+conn = sqlite3.connect('my_database.db')  # 'example.db' is the name of the database file
+
+# Convert the DataFrame to an SQL table
+df.to_sql('Abbrs', conn, if_exists='replace', index=False)
+
+# Close the connection
+conn.close()
