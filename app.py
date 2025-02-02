@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import sqlite3
 
 app = Flask(__name__)
@@ -63,10 +63,11 @@ def submit():
     weekday = request.form.get('WeekdayDropdown')
 
     query = query_database(campus, '%' if building == 'Any' else building, start_time, M_value, duration, weekday)
-    res = f"Received: Campus = {campus}, Building = {building}, Start Time = {start_time}, \
-        Time Period = {M_value}, Duration = {duration}, Weekday = {weekday}"
+    return jsonify(query)
+    # res = f"Received: Campus = {campus}, Building = {building}, Start Time = {start_time}, \
+    #     Time Period = {M_value}, Duration = {duration}, Weekday = {weekday}"
 
-    return render_template('frontend.html', result = res, query_result = query)
+    # return render_template('frontend.html', result = res, query_result = query)
 
 if __name__ == '__main__':
     app.run(debug=True)
