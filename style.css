@@ -25,6 +25,7 @@ select{
     font-family: 'Quattrocento', serif;
     border-color: rgb(75, 38, 38);
     border-radius: 20px;
+    background-color:antiquewhite;
 }
 img {
     border-radius: 25%;
@@ -34,5 +35,5 @@ button{
     font-size: 20px;
     border-color: rgb(75, 38, 38) ;
     border-radius: 20px;
-    background-color:aliceblue;
+    background-color:bisque;
 }
