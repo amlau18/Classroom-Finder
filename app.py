@@ -16,7 +16,7 @@ def conv_to_24hour(time, code):
     if code == 'PM':
         t[0] += 12
 
-    return time
+    return t
 
 def query_database(campus, building, start_time, M_value, duration, weekday):
     conn = sqlite3.connect('schedule.db')
