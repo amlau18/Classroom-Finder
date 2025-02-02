@@ -91,12 +91,14 @@ cur.execute("""CREATE TABLE rooms  (id INTEGER PRIMARY KEY AUTOINCREMENT, campus
 cur.executemany('INSERT INTO rooms(campus, building, room) VALUES(?, ?, ?)', list(zip(campus, buildings, brooms)))
 
 cur.execute("""CREATE TABLE abbrroom AS \
-            SELECT rooms.id, abbrs.campus, rooms.campus, abbrs.abbr, rooms.building, rooms.room \
+            SELECT rooms.id, abbrs.abbcampus, rooms.campus, abbrs.abbr, rooms.building, rooms.room \
             FROM rooms \
             INNER JOIN abbrs ON rooms.building=abbrs.buildingname""")
 
-result = cur.execute("""SELECT * FROM abbrroom""")
+result = cur.execute("""SELECT abbcampus, abbr, room FROM abbrroom WHERE campus like '%' AND building like 'Lucy Stone Hall'""")
 conn.commit()
 
-for row in result:
-    print(row)
+# for row in result:
+#     print(row)
+
+conn.close()

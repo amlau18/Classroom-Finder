@@ -31,14 +31,15 @@ cur = conn.cursor()
 df.to_sql('abbrs', conn, if_exists='replace', index_label='id')
 cur.execute("""ALTER TABLE abbrs RENAME COLUMN 'Abbr.' TO abbr""")
 cur.execute("""ALTER TABLE abbrs RENAME COLUMN 'Building Name' TO buildingname""")
-cur.execute("""ALTER TABLE abbrs RENAME COLUMN Campus TO campus""")
-# cur.execute("""CREATE TABLE IF NOT EXISTS abbrs  (id INTEGER PRIMARY KEY AUTOINCREMENT, abbr TEXT, building TEXT, campus TEXT)""")
+cur.execute("""ALTER TABLE abbrs RENAME COLUMN Campus TO abbcampus""")
 
 conn.commit()
 
-cur.execute("""SELECT * FROM abbrs""")
-for i in cur.description:
-    print(i[0])
+# cur.execute("""SELECT * FROM abbrs""")
+# for i in cur.description:
+#     print(i[0])
 
-for row in cur.execute("SELECT * FROM abbrs"):
-    print(row)
+# for row in cur.execute("SELECT * FROM abbrs"):
+#     print(row)
+
+conn.close()
