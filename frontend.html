@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Example</title>
+    <style>
+        /* Basic styling for the dropdown */
+        select {
+            padding: 10px;
+            font-size: 16px;
+        }
+        
+    </style>
+    <link href=style.css rel="stylesheet">
+</head>
+<body>
+    <h1>
+        Classroom Finder
+        <img src="https://i.pinimg.com/originals/15/29/48/152948d88bf1ab5934db9722f0e21d9b.jpg" style="position: absolute; right: 10px; top: 10px;" width = 245px length = 250px>
+        <img src="https://images.lifestyleasia.com/wp-content/uploads/sites/6/2024/03/28094002/best-anime-food-1600x800.jpg" style="position: absolute; left: 550px; top: 40px;" width = 245px length = 250px>
+    </h1>
+    <form action="app.py" method="post">
+        <label for="CampusDropdown">Campus:</label>
+        <select id="CampusDropdown" onchange="updateOptions()">
+            <option value="">Select</option>
+            <option value="Busch">Busch</option>
+            <option value="Cook / Douglass">Cook / Douglass</option>
+            <option value="Livingston">Livingston</option>
+            <option value="College Avenue">CollegeAvenue</option>
+         </select>
+
+        <label for="BuildingDropdown"> Building:</label>
+        <select id="BuildingDropdown">
+            <option value="">Select</option>
+            <option value="Allison Road Classroom">Allison Road Classroom</option>
+            <option value="BEST West Residence Hall">BEST West Residence Hall</option>
+            <option value="Biomedical Engineering Building">Biomedical Engineering Building</option>
+            <option value="Chemistry & Chemical Biology">Chemistry & Chemical Biology</option>
+            <option value="Computing Research & Education Building (CoRE)">Computing Research & Education Building (CoRE)</option>
+            <option value="Engineering Building">Engineering Building</option>
+            <option value="Fiber Optic Materials Research Building">Fiber Optic Materials Research Building</option>
+            <option value="Hill Center">Hill Center</option>
+            <option value="Pharmacy Building (William Levin Hall)">Pharmacy Building (William Levin Hall)</option>
+            <option value="Physics">Physics</option>
+            <option value="Richard Weeks Hall of Engineering">Richard Weeks Hall of Engineering</option>
+            <option value="Science & Engineering Resource Center (T. Alexander Pond)">Science & Engineering Resource Center (T. Alexander Pond)</option>
+            <option value="Wright Rieman Laboratories">Wright Rieman Laboratories</option>
+            <option value="Bishop House">Bishop House</option>
+            <option value="Campbell Hall">Campbell Hall</option>
+            <option value="Frelinghuysen Hall">Frelinghuysen Hall</option>
+            <option value="Graduate School of Education">Graduate School of Education</option>
+            <option value="Hardenbergh Hall">Hardenbergh Hall</option>
+            <option value="Honors College">Honors College</option>
+            <option value="Milledoler Hall">Milledoler Hall</option>
+            <option value="Murray Hall">Murray Hall</option>
+            <option value="Rutgers Academic Building (East Wing)">Rutgers Academic Building (East Wing)</option>
+            <option value="Rutgers Academic Building (West Wing)">Rutgers Academic Building (West Wing)</option>
+            <option value="School of Communication & Information">School of Communication & Information</option>
+            <option value="Scott Hall">Scott Hall</option>
+            <option value="Van Dyck Hall">Van Dyck Hall</option>
+            <option value="Voorhees Hall">Voorhees Hall</option>
+            <option value="Zimmerli Art Museum">Zimmerli Art Museum</option>
+            <option value="Art History Hall">Art History Hall</option>
+            <option value="Bartlett Hall">Bartlett Hall</option>
+            <option value="Biological Sciences">Biological Sciences</option>
+            <option value="Blake Hall">Blake Hall</option>
+            <option value="Cook Douglass Lecture Hall">Cook Douglass Lecture Hall</option>
+            <option value="Davison Hall">Davison Hall</option>
+            <option value="Food Science Building">Food Science Building</option>
+            <option value="Foran Hall">Foran Hall</option>
+            <option value="Heldrich Science Building">Heldrich Science Building</option>
+            <option value="Hickman Hall">Hickman Hall</option>
+            <option value="Institute of Food Nutrition & Health">Institute of Food Nutrition & Health</option>
+            <option value="Kathleen W Ludwig Global Village Learning Center">Kathleen W Ludwig Global Village Learning Center</option>
+            <option value="Loree Classroom Building">Loree Classroom Building</option>
+            <option value="Ruth Adams Building">Ruth Adams Building</option>
+            <option value="Thompson Hall">Thompson Hall</option>
+            <option value="Waller Hall">Waller Hall</option>
+            <option value="Beck Hall">Beck Hall</option>
+            <option value="Business Rockafeller Road">Business Rockafeller Road</option>
+            <option value="Lucy Stone Hall">Lucy Stone Hall</option>
+            <option value="Tillett Hall">Tillett Hall</option>
+        </select>
+
+        <label for="StartTimeDropdown">Start Time:</label>
+        <select id="StartTimeDropdown">
+            <option value="">Select</option>
+            <option value="01:00">01:00</option>
+            <option value="01:30">01:30</option>
+            <option value="02:00">02:00</option>
+            <option value="02:30">02:30</option>
+            <option value="03:00">03:00</option>
+            <option value="03:30">03:30</option>
+            <option value="04:00">04:00</option>
+            <option value="04:30">04:30</option>
+            <option value="05:00">05:00</option>
+            <option value="05:30">05:30</option>
+            <option value="06:00">06:00</option>
+            <option value="06:30">06:30</option>
+            <option value="07:00">07:00</option>
+            <option value="07:30">07:30</option>
+            <option value="08:00">08:00</option>
+            <option value="08:30">08:30</option>
+            <option value="09:00">09:00</option>
+            <option value="10:00">10:00</option>
+            <option value="10:30">10:30</option>
+            <option value="11:00">11:00</option>
+            <option value="11:30:30">11:00</option>
+            <option value="12:00">12:00</option>
+            <option value="12:30">12:30</option>
+        </select>
+        <label for="AMorPMDropdown"> AM or PM:</label>
+        <select id="AMorPMDropdown">
+            <option value="">Select</option>
+            <option value="AM">AM</option>
+            <option value="PM">PM</option>
+        </select>
+        <label for="DurationDropdown"> Duration:</label>
+        <select id="DurationDropdown">
+            <option value="">Select</option>
+            <option value="60">1 hour</option>
+            <option value="90">1.5 hours</option>
+            <option value="120">2 hours</option>
+            <option value="150">2.5 hours</option>
+            <option value="180">3 hours</option>
+            <option value="210">3.5 hours</option>
+            <option value="240">4 hours</option>
+            <option value="270">4.5 hours</option>
+            <option value="300">5+ hours</option>
+
+        </select>
+
+        <label for="WeekdayDropdown">   Weekday: </label>
+        <select id="WeekdayDropdown">
+            <option value="">Select</option>
+            <option value="Monday">Monday</option>
+            <option value="Tuesday">Tuesday</option>
+            <option value="Wednesday">Wednesday</option>
+            <option value="Thursday">Thursday</option>
+            <option value="Friday">Friday</option>
+        </select>
+
+        <button type="submit">Submit</button>
+        
+    </form>
+    <title>Cascading Dropdown</title>
+    <script>
+        function updateOptions() {
+            var firstDropdown = document.getElementById("CampusDropdown");
+            var secondDropdown = document.getElementById("BuildingDropdown");
+            var selectedValue = firstDropdown.value;
+            
+            // Clear previous options
+            secondDropdown.innerHTML = "";
+
+            // Define the options for each first dropdown selection
+            var options = {
+                "Busch": ['Select','Allison Road Classroom', 'BEST West Residence Hall', 'Biomedical Engineering Building', 'Chemistry & Chemical Biology', 'Computing Research & Education Building (CoRE)', 'Engineering Building', 'Fiber Optic Materials Research Building', 'Hill Center', 'Pharmacy Building (William Levin Hall)', 'Physics', 'Richard Weeks Hall of Engineering', 'Science & Engineering Resource Center (T. Alexander Pond)', 'Wright Rieman Laboratories'],
+                "Colleve Avenue": ['Select','Bishop House', 'Campbell Hall', 'Frelinghuysen Hall', 'Graduate School of Education', 'Hardenbergh Hall', 'Honors College', 'Milledoler Hall', 'Murray Hall', 'Rutgers Academic Building (East Wing)', 'Rutgers Academic Building (West Wing)', 'School of Communication & Information', 'Scott Hall', 'Van Dyck Hall', 'Voorhees Hall', 'Zimmerli Art Museum'],
+                "Cook / Douglass": ['Select','Art History Hall', 'Bartlett Hall', 'Biological Sciences', 'Blake Hall', 'Cook Douglass Lecture Hall', 'Davison Hall', 'Food Science Building', 'Foran Hall', 'Heldrich Science Building', 'Hickman Hall', 'Institute of Food Nutrition & Health', 'Kathleen W Ludwig Global Village Learning Center', 'Loree Classroom Building', 'Ruth Adams Building', 'Thompson Hall', 'Waller Hall'],
+                "Livingston": ['Select','Beck Hall', 'Business Rockafeller Road', 'Lucy Stone Hall', 'Tillett Hall']
+            };
+
+            // Get the new options based on the selected value
+            var newOptions = options[selectedValue] || [];
+            
+            // Populate the second dropdown with the new options
+            newOptions.forEach(function(option) {
+                var opt = document.createElement("option");
+                opt.value = option;
+                opt.text = option;
+                secondDropdown.appendChild(opt);
+            });
+        }
+    </script>
+    <div id= "output"> </div>
+    <script>
+            fetch('http://localhost:5000/data')
+                .then(response => response.json())
+                .then(data => {
+                    for (let item of data) {
+                        let htmlContent = "<h2>Rooms Available:</h2>";
+            
+                        htmlContent += `
+                            <p>${item}</p>
+                            <hr>
+                        `;
+                    }
+            document.getElementById('output').innerHTML = htmlContent;
+            })
+    </script>
+</head>
+
+</body>
+
+
+</html>
